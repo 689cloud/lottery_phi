@@ -4,6 +4,7 @@ import com.demo.lottery.models.Lottery
 
 class SplashViewState (
     val isLoading: Boolean = false,
+    val firstTime: Boolean = false,
     val error: Throwable? = null,
     var data: List<Lottery>? = null
 ) {
@@ -13,6 +14,7 @@ class SplashViewState (
 
     class Builder(restaurantViewState: SplashViewState) {
         private var isLoading = restaurantViewState.isLoading
+        private var isFirstTime = restaurantViewState.firstTime
         private var error = restaurantViewState.error
         private var data = restaurantViewState.data
 
@@ -32,7 +34,7 @@ class SplashViewState (
         }
 
         fun build() : SplashViewState {
-            return  SplashViewState(isLoading, error, data)
+            return  SplashViewState(isLoading, isFirstTime, error, data)
         }
     }
 }

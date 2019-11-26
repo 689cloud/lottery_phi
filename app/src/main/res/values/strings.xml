@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Lottery</string>
+    <string name="welcome_message">Welcome to Lottery world</string>
+    <string name="go_to_main">GO TO MAIN</string>
 </resources>
