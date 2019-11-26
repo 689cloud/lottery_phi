@@ -3,7 +3,6 @@ package com.demo.lottery.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.demo.lottery.MainActivity
 import com.demo.lottery.R
 import kotlinx.android.synthetic.main.activity_welcome.*
 

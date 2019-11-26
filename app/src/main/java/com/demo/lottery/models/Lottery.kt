@@ -12,4 +12,6 @@ data class Lottery (
     @field:Json(name = "drwtNo5") val drwtNo5: Int,
     @field:Json(name = "drwtNo6") val drwtNo6: Int,
     @field:Json(name = "bnusNo") val bnusNo: Int
-)
+) {
+    fun toArray() = arrayOf(drwtNo1, drwtNo2, drwtNo3, drwtNo4, drwtNo5, drwtNo6)
+}

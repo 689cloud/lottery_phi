@@ -63,7 +63,7 @@ class SplashPresenter: MviBasePresenter<SplashView, SplashViewState>(), KoinComp
     }
 
     private fun getLotteryDatas(): Observable<SplashActionState> {
-        return Observable.fromIterable(List(50) {it + 1})
+        return Observable.fromIterable(List(1) {it + 1})
             .flatMap {
                 LotteryApi.getClient()
                     .getLotoResult(no = it)

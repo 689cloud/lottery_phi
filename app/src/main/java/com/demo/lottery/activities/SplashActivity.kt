@@ -2,9 +2,7 @@ package com.demo.lottery.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import com.demo.lottery.MainActivity
 import com.demo.lottery.R
 import com.demo.lottery.models.mvi.SplashViewState
 import com.demo.lottery.presenters.SplashPresenter

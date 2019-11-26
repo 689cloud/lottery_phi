@@ -2,4 +2,7 @@
     <string name="app_name">Lottery</string>
     <string name="welcome_message">Welcome to Lottery world</string>
     <string name="go_to_main">GO TO MAIN</string>
+    <string name="hint_number_drwno">Input drw No</string>
+    <string name="history">History</string>
+    <string name="trending">Trending</string>
 </resources>
