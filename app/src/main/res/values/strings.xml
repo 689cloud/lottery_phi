@@ -5,4 +5,11 @@
     <string name="hint_number_drwno">Input drw No</string>
     <string name="history">History</string>
     <string name="trending">Trending</string>
+
+    <string name="first_prize">First Prize</string>
+    <string name="second_prize">Second Prize</string>
+    <string name="third_prize">Third Prize</string>
+    <string name="fourth_prize">Fourth Prize</string>
+    <string name="fifth_prize">Fifth Prize</string>
+    <string name="no_prize">Better luck next time</string>
 </resources>

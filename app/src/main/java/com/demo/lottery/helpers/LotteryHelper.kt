@@ -34,14 +34,16 @@ object LotteryHelper {
             return Observable.just(MainActionState.LotteryPrizeState(Prize.NO))
         } else {
             var countSame = 0
-            if (current.drwtNo1 == result.drwtNo1) countSame++
-            if (current.drwtNo2 == result.drwtNo2) countSame++
-            if (current.drwtNo3 == result.drwtNo3) countSame++
-            if (current.drwtNo4 == result.drwtNo4) countSame++
-            if (current.drwtNo5 == result.drwtNo5) countSame++
-            if (current.drwtNo6 == result.drwtNo6) countSame++
+            val arrayCurrent = current.toArray()
 
-            val hasBonus = current.toArray().contains(result.bnusNo)
+            if (arrayCurrent.contains(result.drwtNo1)) countSame++
+            if (arrayCurrent.contains(result.drwtNo2)) countSame++
+            if (arrayCurrent.contains(result.drwtNo3)) countSame++
+            if (arrayCurrent.contains(result.drwtNo4)) countSame++
+            if (arrayCurrent.contains(result.drwtNo5)) countSame++
+            if (arrayCurrent.contains(result.drwtNo6)) countSame++
+
+            val hasBonus = arrayCurrent.contains(result.bnusNo)
 
             return when (countSame) {
                 3 -> Observable.just(MainActionState.LotteryPrizeState(Prize.FIFTH))

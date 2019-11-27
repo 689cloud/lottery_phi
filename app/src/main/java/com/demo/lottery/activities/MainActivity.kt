@@ -28,6 +28,7 @@ class MainActivity : MviActivity<MainView, MainPresenter>(), MainView {
     override fun renderData(state: MainViewState) {
         currentViewState = state
         progressBar.visibility = if (state.isLoadingLotteryResult) View.VISIBLE else View.GONE
+        tvPrize.text = ""
         state.lotteryResult?.let {
             tvResult.text = it.toString()
         }
@@ -38,7 +39,7 @@ class MainActivity : MviActivity<MainView, MainPresenter>(), MainView {
             tvResult.text = "N/A"
         }
         state.prize?.let {
-            tvPrize.text = ""
+            tvPrize.text = resources.getString(it.resId)
         }
     }
 

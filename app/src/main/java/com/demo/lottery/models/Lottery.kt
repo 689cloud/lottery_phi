@@ -15,6 +15,9 @@ data class Lottery (
 ) {
     fun toArray() = arrayOf(drwtNo1, drwtNo2, drwtNo3, drwtNo4, drwtNo5, drwtNo6)
     override fun toString(): String {
+        if (returnValue == "fail") {
+            return "N/A"
+        }
         if (bnusNo > 0) {
             return String.format(
                 "%d %d %d %d %d %d - %d",

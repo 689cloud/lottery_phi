@@ -40,6 +40,7 @@ class MainPresenter: MviBasePresenter<MainView, MainViewState>() {
             MainActionState.LoadingState -> {
                 previousState.copy()
                     .isLoadingLotteryResult(true)
+                    .prize(null)
                     .build()
             }
             is MainActionState.LotteryResultState -> {

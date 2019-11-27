@@ -16,7 +16,7 @@
             android:id="@+id/svDrwNo"
             android:hint="@string/hint_number_drwno"
             android:layout_width="120dp"
-            android:layout_marginEnd="-5dp"
+            android:layout_marginEnd="-20dp"
             android:inputType="numberDecimal"/>
         <ProgressBar
             android:id="@+id/progressBar"
@@ -25,8 +25,7 @@
             android:layout_height="wrap_content" />
         <TextView
             style="@style/textRight"
-            android:id="@+id/tvResult"
-            android:text="11 11 11 11 11 11 - 11" />
+            android:id="@+id/tvResult" />
 
     </LinearLayout>
 
@@ -40,8 +39,7 @@
 
         <TextView
             style="@style/textRight"
-            android:id="@+id/tvLottery"
-            android:text="11 11 11 11 11 11 - 11" />
+            android:id="@+id/tvLottery" />
     </LinearLayout>
 
     <LinearLayout
@@ -55,7 +53,6 @@
         <TextView
             style="@style/textRight"
             android:id="@+id/tvPrize"
-            android:text="First Prize"
             android:textColor="@color/colorAccent" />
     </LinearLayout>
 

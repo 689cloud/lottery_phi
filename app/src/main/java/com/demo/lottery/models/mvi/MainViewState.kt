@@ -1,16 +1,22 @@
 package com.demo.lottery.models.mvi
 
+import com.demo.lottery.R
 import com.demo.lottery.models.Lottery
 
-enum class Prize {
-    FIRST , SECOND, THIRD, FOURTH, FIFTH, NO
+enum class Prize(val resId: Int) {
+    FIRST(R.string.first_prize),
+    SECOND(R.string.second_prize),
+    THIRD(R.string.third_prize),
+    FOURTH(R.string.fourth_prize),
+    FIFTH(R.string.fifth_prize),
+    NO(R.string.no_prize)
 }
 
 class MainViewState (
     val isLoadingLotteryResult: Boolean = false,
     val lotteryResult: Lottery? = null,
     val lotteryGenerated: Lottery? = null,
-    val prize: Prize = Prize.NO,
+    val prize: Prize? = null,
     val error: Throwable? = null
 ){
     fun copy(): Builder {
@@ -39,7 +45,7 @@ class MainViewState (
             return this
         }
 
-        fun prize(prize: Prize): Builder {
+        fun prize(prize: Prize?): Builder {
             this.prize = prize
             return this
         }
