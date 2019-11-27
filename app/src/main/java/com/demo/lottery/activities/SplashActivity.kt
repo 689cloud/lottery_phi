@@ -4,15 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.demo.lottery.R
+import com.demo.lottery.helpers.Session
 import com.demo.lottery.models.mvi.SplashViewState
 import com.demo.lottery.presenters.SplashPresenter
 import com.hannesdorfmann.mosby3.mvi.MviActivity
 import com.jakewharton.rxbinding3.view.clicks
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_splash.*
+import org.koin.android.ext.android.inject
 
 
 class SplashActivity : MviActivity<SplashView, SplashPresenter>() , SplashView {
+
+    private val session: Session by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +44,7 @@ class SplashActivity : MviActivity<SplashView, SplashPresenter>() , SplashView {
             tvError.text = it.localizedMessage
         }
         state.data?.let {
+            session.dataHistory = it
             val intent = Intent(
                 this,
                 if (state.firstTime) WelcomeActivity::class.java else MainActivity::class.java
