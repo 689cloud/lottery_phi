@@ -1,5 +1,6 @@
 package com.demo.lottery.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.demo.lottery.R
@@ -19,6 +20,7 @@ class MainActivity : MviActivity<MainView, MainPresenter>(), MainView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        btnHistory.setOnClickListener { startActivity(Intent(this, HistoryActivity::class.java)) }
     }
 
     override fun createPresenter(): MainPresenter {

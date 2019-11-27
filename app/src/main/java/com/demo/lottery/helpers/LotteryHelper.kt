@@ -26,7 +26,7 @@ object LotteryHelper {
         Collections.shuffle(arrayNumber)
         val result = arrayNumber.subList(0, 6).sorted()
         return Observable.just(result)
-            .map<MainActionState>{ MainActionState.LotteryRandomState(Lottery("success", -1, it[0], it[1], it[2], it[3], it[4], it[5],-1)) }
+            .map<MainActionState>{ MainActionState.LotteryRandomState(Lottery("success", -1,"", it[0], it[1], it[2], it[3], it[4], it[5],-1)) }
     }
 
     fun calculatePrize(current: Lottery?, result: Lottery?): Observable<MainActionState> {

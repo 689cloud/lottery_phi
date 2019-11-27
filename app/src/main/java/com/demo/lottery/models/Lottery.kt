@@ -5,6 +5,7 @@ import com.squareup.moshi.Json
 data class Lottery (
     @field:Json(name = "returnValue") val returnValue: String,
     @field:Json(name = "drwNo") val drwNo: Int,
+    @field:Json(name = "drwNoDate") val drwNoDate: String,
     @field:Json(name = "drwtNo1") val drwtNo1: Int,
     @field:Json(name = "drwtNo2") val drwtNo2: Int,
     @field:Json(name = "drwtNo3") val drwtNo3: Int,

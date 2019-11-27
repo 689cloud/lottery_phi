@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp">
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2019/12/12"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="20dp"/>
+    <TextView
+        android:id="@+id/tv1"
+        style="@style/textLotto" />
+    <TextView
+        android:id="@+id/tv2"
+        style="@style/textLotto" />
+    <TextView
+        android:id="@+id/tv3"
+        style="@style/textLotto" />
+    <TextView
+        android:id="@+id/tv4"
+        style="@style/textLotto" />
+    <TextView
+        android:id="@+id/tv5"
+        style="@style/textLotto" />
+    <TextView
+        android:id="@+id/tv6"
+        style="@style/textLotto" />
+    <TextView
+        android:id="@+id/tvBonus"
+        style="@style/textLotto"
+        android:layout_marginStart="15dp"
+        android:textColor="#16a085" />
+
+</LinearLayout>

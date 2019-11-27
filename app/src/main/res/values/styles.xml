@@ -23,4 +23,14 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="textLotto">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginEnd">5dp</item>
+        <item name="android:background">@drawable/background_lotto</item>
+    </style>
 </resources>
