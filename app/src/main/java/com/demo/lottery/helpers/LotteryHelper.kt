@@ -3,11 +3,15 @@ package com.demo.lottery.helpers
 import com.demo.lottery.models.Lottery
 import com.demo.lottery.models.mvi.MainActionState
 import com.demo.lottery.models.mvi.Prize
+import com.demo.lottery.models.mvi.TrendingActionState
 import com.demo.lottery.retrofit.LotteryApi
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
 import java.util.*
+import java.util.function.Function
+import java.util.stream.Collectors
+import kotlin.collections.ArrayList
 
 
 object LotteryHelper {
@@ -53,5 +57,15 @@ object LotteryHelper {
                 else -> Observable.just(MainActionState.LotteryPrizeState(Prize.NO))
             }
         }
+    }
+
+    fun calculateTrending(data: List<Lottery>): Observable<TrendingActionState> {
+        val result = data
+            .flatMap { it.toArrayTrending() }
+            .groupBy { it }
+            .map { Pair(it.key, it.value.size)}
+            .sortedByDescending{it.second}
+        return Observable.just(TrendingActionState.CalculateTrending(result))
+
     }
 }

@@ -21,6 +21,7 @@ class MainActivity : MviActivity<MainView, MainPresenter>(), MainView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btnHistory.setOnClickListener { startActivity(Intent(this, HistoryActivity::class.java)) }
+        btnTrending.setOnClickListener { startActivity(Intent(this, TrendingActivity::class.java)) }
     }
 
     override fun createPresenter(): MainPresenter {
