@@ -1,17 +1,21 @@
 package com.demo.lottery.activities
 
 import android.os.Bundle
+import android.view.View
 import com.demo.lottery.R
 import com.demo.lottery.models.Lottery
 import com.demo.lottery.models.mvi.MainViewState
 import com.demo.lottery.presenters.MainPresenter
 import com.hannesdorfmann.mosby3.mvi.MviActivity
 import com.jakewharton.rxbinding3.view.clicks
+import com.jakewharton.rxbinding3.widget.textChanges
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.concurrent.TimeUnit
 
 class MainActivity : MviActivity<MainView, MainPresenter>(), MainView {
 
+    private var currentViewState: MainViewState? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,17 +26,33 @@ class MainActivity : MviActivity<MainView, MainPresenter>(), MainView {
     }
 
     override fun renderData(state: MainViewState) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        currentViewState = state
+        progressBar.visibility = if (state.isLoadingLotteryResult) View.VISIBLE else View.GONE
+        state.lotteryResult?.let {
+            tvResult.text = it.toString()
+        }
+        state.lotteryGenerated?.let {
+            tvLottery.text = it.toString()
+        }
+        state.error?.let {
+            tvResult.text = "N/A"
+        }
+        state.prize?.let {
+            tvPrize.text = ""
+        }
     }
 
     override fun getLotteryResult(): Observable<Int> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return  svDrwNo.textChanges()
+            .skipInitialValue()
+            .map{it.toString().toIntOrNull() ?: 0}
+            .debounce(300, TimeUnit.MILLISECONDS)
     }
 
     override fun generateLottery(): Observable<Unit> = btnGenerate.clicks()
 
     override fun calculateResult(): Observable<Pair<Lottery?, Lottery?>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return btPrize.clicks().map{ currentViewState?.let { it.lotteryGenerated to it.lotteryResult } }
     }
 
 

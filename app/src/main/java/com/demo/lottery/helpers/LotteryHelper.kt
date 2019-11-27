@@ -5,6 +5,8 @@ import com.demo.lottery.models.mvi.MainActionState
 import com.demo.lottery.models.mvi.Prize
 import com.demo.lottery.retrofit.LotteryApi
 import io.reactivex.Observable
+import io.reactivex.Scheduler
+import io.reactivex.schedulers.Schedulers
 import java.util.*
 
 
@@ -13,6 +15,7 @@ object LotteryHelper {
     fun getLotteryResult(number : Int): Observable<MainActionState> {
         return LotteryApi.getClient()
             .getLotoResult(no = number)
+            .subscribeOn(Schedulers.io())
             .map<MainActionState>{ MainActionState.LotteryResultState(it)}
             .startWith(MainActionState.LoadingState)
             .onErrorReturn { MainActionState.ErrorState(it)}

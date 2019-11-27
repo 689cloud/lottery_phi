@@ -14,4 +14,29 @@ data class Lottery (
     @field:Json(name = "bnusNo") val bnusNo: Int
 ) {
     fun toArray() = arrayOf(drwtNo1, drwtNo2, drwtNo3, drwtNo4, drwtNo5, drwtNo6)
+    override fun toString(): String {
+        if (bnusNo > 0) {
+            return String.format(
+                "%d %d %d %d %d %d - %d",
+                drwtNo1,
+                drwtNo2,
+                drwtNo3,
+                drwtNo4,
+                drwtNo5,
+                drwtNo6,
+                bnusNo
+            )
+        } else {
+            return String.format(
+                "%d %d %d %d %d %d",
+                drwtNo1,
+                drwtNo2,
+                drwtNo3,
+                drwtNo4,
+                drwtNo5,
+                drwtNo6
+            )
+        }
+
+    }
 }
