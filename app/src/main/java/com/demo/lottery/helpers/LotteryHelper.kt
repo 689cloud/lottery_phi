@@ -1,10 +1,7 @@
 package com.demo.lottery.helpers
 
 import com.demo.lottery.models.Lottery
-import com.demo.lottery.models.mvi.MainActionState
-import com.demo.lottery.models.mvi.Prize
-import com.demo.lottery.models.mvi.SplashActionState
-import com.demo.lottery.models.mvi.TrendingActionState
+import com.demo.lottery.models.mvi.*
 import com.demo.lottery.retrofit.LotteryApi
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
@@ -12,7 +9,7 @@ import io.reactivex.schedulers.Schedulers
 object LotteryHelper {
 
     fun getLotteryDatas(): Observable<SplashActionState> {
-        return Observable.fromIterable(List(1) {it + 1})
+        return Observable.fromIterable(List(50) {it + 1})
             .flatMap {
                 LotteryApi.getClient()
                     .getLotoResult(no = it)
@@ -33,6 +30,15 @@ object LotteryHelper {
             .map<MainActionState>{ MainActionState.LotteryResultState(it)}
             .startWith(MainActionState.LoadingState)
             .onErrorReturn { MainActionState.ErrorState(it)}
+    }
+
+    fun getLotteryResultDeeplink(number : Int): Observable<DeeplinkActionState> {
+        return LotteryApi.getClient()
+            .getLotoResult(no = number)
+            .subscribeOn(Schedulers.io())
+            .map<DeeplinkActionState>{DeeplinkActionState.LotteryResultState(it)}
+            .startWith(DeeplinkActionState.LoadingState)
+            .onErrorReturn {DeeplinkActionState.ErrorState(it)}
     }
 
     fun generateLottery(): Observable<MainActionState> {
